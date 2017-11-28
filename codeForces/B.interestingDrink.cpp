@@ -1,21 +1,52 @@
 #include <iostream>
 #include <cstdio>
+#include <algorithm>
 
 using namespace std;
 
-int main(int argc, char const *argv[])
+int binarySearch(int arr[], int size, int target)
 {
-    int n, t;
-    int c[3] = {0, 0, 0};
-    cin >> n;
-
-    for (int i = 0; i < n; ++i)
+    int mid, s = 0, e = size - 1;
+    while(s < e)
     {
-        cin >> t;
-        c[t % 3]++;
+        mid = (s + e + 1) / 2;
+        if (target < arr[mid])
+        {
+            e = mid - 1;
+        } else {
+            s = mid;
+        }
     }
 
-    cout << c[0] / 2 + min(c[1], c[2]) << endl;
+    return s;
+}
+
+int main(int argc, char const *argv[])
+{
+    int n, q, t, index;
+
+    cin >> n;
+    int c[n];
+    for (int i = 0; i < n; ++i)
+    {
+        cin >> c[i];
+    }
+
+    sort(c, c + n);
+
+    cin >> q;
+    for (int i = 0; i < q; ++i)
+    {
+        cin >> t;
+        index = binarySearch(c, n, t);
+        if(c[index] > t) {
+            cout << index << endl;
+        } else {
+            cout << index + 1 << endl;
+        }
+    }
+
+
     return 0;
 }
 
