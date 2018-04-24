@@ -1,0 +1,34 @@
+#include <iostream>
+#include <algorithm>
+
+using namespace std;
+
+int main(int argc, char const *argv[])
+{
+    int n, res = 0, db = 1, de = 1;
+    cin >> n;
+
+    int arr[n];
+    for (int i = 0; i < n; ++i)
+    {
+        cin >> arr[i];
+    }
+
+    sort(arr, arr + n);
+
+    for (int i = 0; (i + 1) < n && arr[i] == arr[i + 1] ; ++i)
+    {
+        db++;
+    }
+
+    for (int i = n - 1; i != 0 && arr[i] == arr[i - 1] ; --i)
+    {
+        de++;
+    }
+
+    res = n - db - de;
+    if(res < 0) cout << "0" << endl;
+    else cout << res << endl;
+
+    return 0;
+}

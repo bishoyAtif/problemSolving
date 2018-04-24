@@ -20,9 +20,9 @@ long long lastBinarySearch(long long arr[], long long size, long long target)
 
 int main(int argc, char const *argv[])
 {
-    long long n, k;
+    unsigned long n, k;
     cin >> n >> k;
-    long long cu[k - 1];
+    // long long cu[k - 1];
     
     cu[0] = k;
     for (long long i = k - 1, c = 1; i >= 2 ; --i, c++)
